@@ -9,11 +9,27 @@ class App extends Component {
       {id:3,name:'zizo',age:25},
     ]
   }
+  deleteItem = (id)=>{
+    // // حفظت كل الايتمز في الايتمز اللي عندي ده 
+    // let items = this.state.items;
+    // // بتأكد هنا من ان الايدي اللي معايا مطابق للايدي اللي إضغط عليه وده من خلال الفانكشان بتاعة فايند اندكس 
+    // // وظيفة الفايند إندكس انها بتلف على ال
+    // let i = items.findIndex(item => item.id === id)
+    // // إعمل دليت لمرة واحدة فقط
+    // items.splice(i,1)
+    // // برجع اعمل ابديت للستيت
+    // this.setState({items:items})
+
+    let items = this.state.items.filter(item => {
+      return item.id !==id 
+    })
+    this.setState({items})
+  }
   render() {
     return (
       <div className="App">
         Todo List App
-        <TodoItems items = {this.state.items} />
+        <TodoItems items = {this.state.items} deleteItem = {this.deleteItem}/>
         <AddItem/>
       </div>
     );
