@@ -19,10 +19,17 @@ class App extends Component {
     // items.splice(i,1)
     // // برجع اعمل ابديت للستيت
     // this.setState({items:items})
-
+    // طريقة ثانية بفلتر الاراي وبعدي على الايتمز جوة وأعرض المخالف للايدي اللي معايا 
     let items = this.state.items.filter(item => {
       return item.id !==id 
     })
+    this.setState({items})
+  }
+
+  addItem = (item) =>{
+    item.id = Math.random();
+    let items = this.state.items;
+    items.push(item);
     this.setState({items})
   }
   render() {
@@ -30,7 +37,7 @@ class App extends Component {
       <div className="App">
         Todo List App
         <TodoItems items = {this.state.items} deleteItem = {this.deleteItem}/>
-        <AddItem/>
+        <AddItem addItem= {this.addItem}/>
       </div>
     );
   }
